@@ -1,19 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <Games
+        :games="games"
+        @eliminarGame="eliminar"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Games from "./components/Games.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  data(){
+    return{
+      games: ["Arena of valor", "Pokemon Unite", "Donkey Kong", "Heroes of the storm", "Valorant"]
+
+    }
+  },
   components: {
-    HelloWorld
-  }
-}
+    Games,
+  },
+  methods:{
+    eliminar(index){
+      this.games.splice(index,1)
+    }
+
+  },
+  
+};
 </script>
 
 <style>
@@ -23,6 +37,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
